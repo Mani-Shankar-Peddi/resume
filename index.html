@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mani Shankar Peddi - VLSI Physical Design Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: left;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-text h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: left;
+        }
+        
+        .hero-text h2::after {
+            margin: 15px 0;
+        }
+        
+        .hero-text p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-item i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* Experience Section */
+        #experience {
+            background-color: #f5f7fa;
+        }
+        
+        .experience-item {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .company {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 22px;
+        }
+        
+        .date {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .position {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .responsibilities {
+            list-style-type: none;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .responsibilities li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* Clients Section */
+        #clients {
+            background-color: white;
+        }
+        
+        .clients-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .client-item {
+            background: #f5f7fa;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .client-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .client-item img {
+            max-height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        
+        /* Projects Section */
+        #projects {
+            background-color: #f5f7fa;
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .project-tag {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Skills Section */
+        #skills {
+            background-color: white;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: #f5f7fa;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .skill-category ul {
+            list-style-type: none;
+        }
+        
+        .skill-category ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .skill-category ul li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--secondary-color);
+        }
+        
+        /* Certifications Section */
+        #certifications {
+            background-color: #f5f7fa;
+        }
+        
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .certification-item {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .certification-item img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .certification-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Education Section */
+        #education {
+            background-color: white;
+        }
+        
+        .education-item {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .education-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .education-item p {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 25px;
+        }
+               
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .hero-text h2 {
+                text-align: center;
+            }
+            
+            .hero-text h2::after {
+                margin: 15px auto;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-text h2 {
+                font-size: 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            h2 {
+                font-size: 30px;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-item img {
+                max-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Mani Shankar <span>Peddi</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Mani Shankar Peddi</h1>
+                <h2>Building the Heart of Technology: VLSI Physical Design Engineer</h2>
+                <p>With 6 years of hands-on experience, I specialize in optimizing complex chip layouts for peak performance, minimal power, and efficient area utilization, consistently accelerating successful tape-outs for cutting-edge 4nm and 7nm technologies.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn">Explore My Expertise</a>
+                    <a href="#contact" class="btn btn-outline">Hire Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNJ_c0zdHiK-SVkJOZ4WAWh34fhBbPqNrKktmu5zuaKL4PK-XQR6CcWjXWFlQfMz7374qhYXTJfB0eugUh8aVcEWMVl_0jAhr-bL5Bgh3BycQ2uBDJtzvm3HCpKpS3wIfMi4sIJiR7mkF06vQorcc90=w428-h642-s-no-gm?authuser=0" alt="Mani Shankar Peddi">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>As a VLSI Physical Design Engineer, I thrive on transforming intricate architectural concepts into robust, high-performance silicon. My expertise lies in proactively tackling the most demanding timing and power challenges inherent in advanced node designs (4nm, 7nm).</p>
+                    <p>I am driven by the pursuit of efficiency and innovation, navigating complex layout and power delivery networks to consistently deliver next-generation semiconductor solutions that directly contribute to organizational success and technological advancement.</p>
+                    
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>STA & Timing Closure (Advanced)</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Advanced Node (4nm/7nm) Optimization</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Congestion & Density Management</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Physical Verification & Sign-off</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Low Power Design Techniques</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Automation & Scripting (TCL/Shell)</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Chip & Block Level Design Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experience & Impact</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company">Quest Global</div>
+                    <div class="date">Jan 2020 - Present</div>
+                </div>
+                <div class="position">Technical Lead</div>
+                <ul class="responsibilities">
+                    <li>Led the physical implementation of complex blocks and collaborated extensively with customer, Design Engineer (DE), and chip-top teams, ensuring seamless data handshake and achieving robust block implementation closure.</li>
+                    <li>Drove the optimization of Power, Performance, and Area (PPA) across all APR stages, meticulously analyzing summary and detailed reports to ensure design quality and track run status for optimal results.</li>
+                    <li>Engineered multiple iterations of advanced floorplans, strategically arranging macros and I/O pins based on data flow insights from Design Engineers, significantly improving layout efficiency and performance potential.</li>
+                    <li>Achieved critical timing closure across all corners by developing and implementing targeted optimization techniques, utilizing a proprietary internal timing analysis and ECO generation tool to resolve complex timing violations.</li>
+                    <li>Ensured design integrity and manufacturability by rigorously fixing Physical Design Rule Checks (DRCs) within <strong>Cadence Innovus</strong> using <strong>Mentor Calibre</strong>, accelerating design sign-off.</li>
+                    <li>Gained hands-on expertise in chip-top level design, including performing manual analog routing using <strong>Cadence Innovus</strong> to achieve critical signal integrity and optimize overall chip performance.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Key Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="VLSI Chip Design">
+                    </div>
+                    <div class="project-content">
+                        <h3>7nm Mobile Processor Implementation</h3>
+                        <p>Led physical design implementation for a high-performance mobile processor, achieving 15% power reduction and meeting aggressive timing targets.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Cadence Innovus</span>
+                            <span class="project-tag">7nm</span>
+                            <span class="project-tag">Low Power</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI Chip Design">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Accelerator Chip Design</h3>
+                        <p>Optimized floorplan and power distribution network for AI accelerator chip, reducing congestion by 30% and improving performance by 20%.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Floorplanning</span>
+                            <span class="project-tag">Power Optimization</span>
+                            <span class="project-tag">5nm</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Automation Script">
+                    </div>
+                    <div class="project-content">
+                        <h3>Design Flow Automation</h3>
+                        <p>Developed TCL scripts to automate physical design flow, reducing manual effort by 80% and improving consistency across projects.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">TCL Scripting</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Innovus</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients">
+        <div class="container">
+            <h2>Clients Worked With</h2>
+            <div class="clients-container">
+                <div class="client-item">
+                    <img src="https://www.mediatek.com/hubfs/raw_assets/public/MediaTek_Mar_2024/images/mediatek-logo.svg" alt="Mediatek">
+                    <p>Collaborated on 5G modem chip design, optimizing power and performance for mobile applications</p>
+                    <a href="https://www.mediatek.com" class="btn" target="_blank">Official Website</a>
+                </div>
+                
+                <div class="client-item">
+                    <img src="https://www.renesas.com/themes/kachow/src/components/common/images/renesas-logo-blue.svg" alt="Renesas">
+                    <p>Worked on automotive microcontroller design with focus on reliability and power efficiency</p>
+                    <a href="https://www.renesas.com" class="btn" target="_blank">Official Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Tools</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Physical Design Tools</h3>
+                    <ul>
+                        <li>Cadence Innovus (Implementation)</li>
+                        <li>Synopsys PrimeTime (Static Timing Analysis)</li>
+                        <li>Mentor Calibre (Physical Verification)</li>
+                        <li>Proprietary Timing Analysis & ECO Generation Tool (Tweaker)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Methodologies</h3>
+                    <ul>
+                        <li>Floorplanning</li>
+                        <li>Clock Tree Synthesis (CTS)</li>
+                        <li>Placement & Routing (P&R)</li>
+                        <li>Static Timing Analysis (STA)</li>
+                        <li>EM/IR Analysis</li>
+                        <li>Low Power Design</li>
+                        <li>Physical Verification (DRC/LVS/Antenna)</li>
+                        <li>ECO Implementation</li>
+                        <li>Chip/Block Level Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Scripting Languages</h3>
+                    <ul>
+                        <li>TCL</li>
+                        <li>Shell Scripting</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Operating Systems</h3>
+                    <ul>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications & Validated Skills</h2>
+            <div class="certifications-container">
+                <div class="certification-item">
+                    <img src="https://images.credly.com/images/82f24a03-0ba5-4644-a077-eab313c91640/image.png" alt="Cadence Innovus Certification">
+                    <h3>Cadence - Innovus Implementation System (Block) v22.1</h3>
+                    <p>Validates hands-on proficiency in advanced block-level physical implementation using Cadence Innovus, critical for achieving optimal PPA targets and efficient design closure.</p>
+                    <a href="https://www.credly.com/badges/f713a730-85ca-482b-b347-4ff8cfc3d0f3/public_url" class="btn" target="_blank">View Credly Badge</a>
+                </div>
+                <div class="certification-item">
+                    <img src="https://images.credly.com/images/f71be932-f557-4e5a-86ed-ee6ee56db772/Basic_Static_Timing_Analysis_Badge_vSSV201.png" alt="Cadence STA Certification">
+                    <h3>Cadence - Basic Static Timing Analysis v2.0</h3>
+                    <p>Confirms foundational expertise in Static Timing Analysis, ensuring robust timing closure and performance validation for complex designs within industry-standard flows.</p>
+                    <a href="https://www.credly.com/badges/d6de1c6b-49f8-48f7-b95e-e87130e37fe3/public_url" class="btn" target="_blank">View Credly Badge</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>M.Tech in VLSI Design</h3>
+                <p>Anurag University</p>
+            </div>
+            <div class="education-item">
+                <h3>B.Tech in Electronics & Communication Engineering</h3>
+                <p>JNTU University</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <p>If you feel I am suitable for any challenges, please feel free to drop me an email for discussion.</p>
+            
+            <div class="contact-container" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+					
+                    <p><center><i class="fas fa-envelope"></i> <a href="mailto:peddi.manishankar@outlook.com">peddi.manishankar@outlook.com</a></center></p>
+                    <p><center><i class="fas fa-phone"></i> +91-9441203353</p></center>
+                    <p><center><i class="fas fa-map-marker-alt"></i> Hyderabad, India</center></p>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/peddimanishankar" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.youtube.com/@ManiShankar05?sub_confirmation=1" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    
+                    <a href="#" class="btn" style="margin-top: 20px; display: inline-block;">
+                        <i class="fas fa-download"></i> Download Resume (ATS Optimized)
+                    </a>
+                </div>            
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mani Shankar Peddi. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
